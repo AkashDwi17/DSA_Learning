@@ -46,11 +46,31 @@ public  class _1CreateLinkedList {
             temp = temp.next;
         }
     }
+
+    // Add Middle 
+
+    public void addMiddle (int data, int k){
+        Node newNode = new Node(data);
+        Node temp = head;
+        int i = 0;
+        while (i < k-1){
+            i++;
+            temp = temp.next;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
+
+
     public static void main (String args[]){
         _1CreateLinkedList ll = new _1CreateLinkedList();
         ll.addLast(1);
         ll.addLast(2);
         ll.addLast(3);
+        ll.addLast(4);
+        ll.addLast(5);
+        ll.print();
+        ll.addMiddle(100, 3);
         ll.print();
     }
 }
