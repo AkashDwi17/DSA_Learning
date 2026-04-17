@@ -61,6 +61,20 @@ public  class _1CreateLinkedList {
         temp.next = newNode;
     }
 
+    // Reverse LL
+
+    public void reverseLL (){
+        Node prev = null;
+        Node curr = head;
+        Node next;
+        while (curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
 
     public static void main (String args[]){
         _1CreateLinkedList ll = new _1CreateLinkedList();
@@ -70,7 +84,7 @@ public  class _1CreateLinkedList {
         ll.addLast(4);
         ll.addLast(5);
         ll.print();
-        ll.addMiddle(100, 3);
+        ll.reverseLL();
         ll.print();
     }
 }
