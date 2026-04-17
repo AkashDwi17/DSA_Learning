@@ -197,17 +197,56 @@ public  class _1CreateLinkedList {
     temp.next = null;
 }
 
+
+    // Zig Zag
+    public static void zigzag (){
+        Node slow = head;
+        Node fast = head.next;
+        while (fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node midNode = slow;
+
+        Node prev = null;
+        Node curr = midNode.next;
+        midNode.next = null;
+        Node next;
+        while (curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node left = head;
+        Node right = prev;
+        Node nextL, nextR;
+
+        while (left != null && right != null){
+            nextL = left.next;
+            nextR = right.next;
+            left.next = right;
+            right.next = nextL;
+            left = nextL;
+            right = nextR;
+        }
+    }
     
     public static void main (String args[]){
         _1CreateLinkedList ll = new _1CreateLinkedList();
         
-        head = new Node(1);
-        head.next = new Node(2);
-        head.next.next = new Node(3);
-        head.next.next.next = head;
-        System.out.println(isCycle());
-        System.out.println();
-        removeCycle();
-        System.out.println(isCycle());
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.addLast(5);
+
+        System.out.println("Before:");
+        ll.print();
+
+        zigzag();
+
+        System.out.println("After ZigZag:");
+        ll.print();
     }
 }
