@@ -199,6 +199,7 @@ public  class _1CreateLinkedList {
 
 
     // Zig Zag
+    
     public static void zigzag (){
         Node slow = head;
         Node fast = head.next;
