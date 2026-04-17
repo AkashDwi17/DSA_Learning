@@ -99,6 +99,7 @@ public  class _1CreateLinkedList {
     
     // Check is palindrome
 
+    // Find Mid Node
     public static Node findMid (Node head){
         Node slow = head;
         Node fast = head;
@@ -109,6 +110,10 @@ public  class _1CreateLinkedList {
         }
         return slow;
     }
+
+
+    // Check Palindrome
+
     public static boolean isPalimdrome (){
         if (head == null || head.next == null){
             return true;
@@ -139,15 +144,28 @@ public  class _1CreateLinkedList {
         return true;
     }
     
+    // Detect Cyle
+
+    public static boolean isCycle (){
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {  
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public static void main (String args[]){
         _1CreateLinkedList ll = new _1CreateLinkedList();
-        ll.addLast(1);
-        ll.addLast(2);
-        ll.addLast(3);
-        // ll.addLast(3);
-        ll.addLast(2);
-        ll.addLast(1);
-        ll.print();
-        System.out.print(isPalimdrome());
+        head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        head.next.next.next = head;
+        System.out.println(isCycle());
+        // System.out.print(isPalimdrome());
     }
 }
