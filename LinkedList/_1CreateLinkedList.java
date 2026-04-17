@@ -96,16 +96,58 @@ public  class _1CreateLinkedList {
         }
         prev.next = prev.next.next;
     }
+    
+    // Check is palindrome
+
+    public static Node findMid (Node head){
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+    public static boolean isPalimdrome (){
+        if (head == null || head.next == null){
+            return true;
+        }
+        Node midNode = findMid(head);
+
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+
+        while (curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node left = head;
+        Node right = prev;
+
+        while (right != null){
+            if (left.data != right.data){
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+    
     public static void main (String args[]){
         _1CreateLinkedList ll = new _1CreateLinkedList();
         ll.addLast(1);
         ll.addLast(2);
         ll.addLast(3);
-        ll.addLast(4);
-        ll.addLast(5);
-        ll.addLast(6);
+        // ll.addLast(3);
+        ll.addLast(2);
+        ll.addLast(1);
         ll.print();
-        ll.deleteNthNodeFromEnd(2);
-        ll.print();
+        System.out.print(isPalimdrome());
     }
 }
