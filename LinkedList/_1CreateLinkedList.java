@@ -42,9 +42,10 @@ public  class _1CreateLinkedList {
     public  void print (){
         Node temp = head;
         while (temp != null){
-            System.out.println(temp.data+" ");
+            System.out.print(temp.data+" ");
             temp = temp.next;
         }
+        System.out.println ();
     }
 
     // Add Middle 
@@ -76,6 +77,25 @@ public  class _1CreateLinkedList {
         head = prev;
     }
 
+    // Delete Nth Node from End
+
+    public  void deleteNthNodeFromEnd (int n){
+        int sz = 0;
+        Node temp = head;
+        while (temp != null){
+            sz ++;
+            temp = temp.next;
+        }
+
+        int i = 1;
+        Node prev = head;
+        int idxToFind = sz- n;
+        while (i < idxToFind-1){
+            i++;
+            prev = prev.next;
+        }
+        prev.next = prev.next.next;
+    }
     public static void main (String args[]){
         _1CreateLinkedList ll = new _1CreateLinkedList();
         ll.addLast(1);
@@ -83,8 +103,9 @@ public  class _1CreateLinkedList {
         ll.addLast(3);
         ll.addLast(4);
         ll.addLast(5);
+        ll.addLast(6);
         ll.print();
-        ll.reverseLL();
+        ll.deleteNthNodeFromEnd(2);
         ll.print();
     }
 }
