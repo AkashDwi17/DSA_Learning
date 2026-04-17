@@ -1,0 +1,20 @@
+
+    // Delete Nth Node from End
+
+    public  void deleteNthNodeFromEnd (int n){
+        int sz = 0;
+        Node temp = head;
+        while (temp != null){
+            sz ++;
+            temp = temp.next;
+        }
+
+        int i = 1;
+        Node prev = head;
+        int idxToFind = sz- n;
+        while (i < idxToFind-1){
+            i++;
+            prev = prev.next;
+        }
+        prev.next = prev.next.next;
+    }
