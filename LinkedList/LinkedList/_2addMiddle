@@ -1,0 +1,13 @@
+// Add Middle 
+
+    public void addMiddle (int data, int k){
+        Node newNode = new Node(data);
+        Node temp = head;
+        int i = 0;
+        while (i < k-1){
+            i++;
+            temp = temp.next;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
